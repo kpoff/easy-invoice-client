@@ -14,6 +14,7 @@ class Login extends Component {
     event.preventDefault();
     const username = this.state.email;
     const password = this.state.password;
+
   
     this.service.login(username, password)
     .then( response => {
@@ -21,8 +22,7 @@ class Login extends Component {
             email: "", 
             password: "",
         });
-          this.props.setTheUserInTheAppComponent(response) 
-          console.log("the response is:", response)       
+          this.props.setTheUserInTheAppComponent(response)       
     })
     .catch( error => console.log(error) )
   }

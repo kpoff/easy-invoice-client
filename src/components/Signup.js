@@ -33,7 +33,6 @@ class Signup extends Component {
         });
         if(response.email) {
           this.props.setTheUserInTheAppComponent(response)
-          
         } 
     })
     .catch( error => {
