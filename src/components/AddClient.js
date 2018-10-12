@@ -1,5 +1,4 @@
 // components/projects/AddProject.js
-
 import React, { Component } from 'react';
 import axios from 'axios';
 
@@ -7,7 +6,7 @@ import axios from 'axios';
 class AddClient extends Component {
   constructor(props){
       super(props);
-      this.state = {email: "", password: "", role: "", firstName: "", lastName: "", address: "", phone: ""};
+      this.state = {email: "", password: "", role: "", firstName: "", lastName: "",businessName: "", address: "", phone: ""};
   }
    
   handleFormSubmit = (event) => {
@@ -17,12 +16,13 @@ class AddClient extends Component {
     const password = this.state.password;
     const firstName = this.state.firstName;
     const lastName = this.state.lastName;
+    const businessName = this.state.businessName;
     const address = this.state.address;
     const phone = this.state.phone;
     const projectID = this.props.projectID
    
    
-    axios.post(process.env.BASE_URL+"addclient", {email, password, firstName, lastName, address, phone, projectID}, {withCredentials: true })
+    axios.post(process.env.REACT_APP_BASE_URL+"/addclient", {email, password, firstName, lastName, businessName, address, phone, projectID}, {withCredentials: true })
     .then( () => {
         this.props.hideForm();
         this.props.getData();
@@ -32,10 +32,6 @@ class AddClient extends Component {
 
   handleChange = (event) => {  
       const {name, value} = event.target;
-    //   ^ this is just fancy syntax for the 2 lines below
-    //   const name = event.target.name;
-    //   const value = event.target.value;
-
       this.setState({[name]: value});
   }
 
@@ -51,6 +47,8 @@ class AddClient extends Component {
           <input type="text" name="firstName" value={this.state.firstName} onChange={ e => this.handleChange(e)}/>
           <label>Last Name:</label>
           <input type="text" name="lastName" value={this.state.lastName} onChange={ e => this.handleChange(e)}/>
+          <label>Business Name:</label>
+          <input type="text" name="businessName" value={this.state.businessName} onChange={ e => this.handleChange(e)}/>
           <label>Address:</label>
           <input type="text" name="address" value={this.state.address} onChange={ e => this.handleChange(e)}/>
           <label>Phone:</label>

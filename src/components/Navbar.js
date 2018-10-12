@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import AuthService from './auth/auth-service';
 
+
 class Navbar extends Component {
   constructor(props){
     super(props);
     this.state = { loggedInUser: null };
     this.service = new AuthService();
+
 
   }
   
@@ -21,13 +23,12 @@ class Navbar extends Component {
       this.props.setTheUserInTheAppComponent(null)
     })
   }
-    
   render(){
     if(this.state.loggedInUser){
       return(
-        <nav className="nav-style">
+        <nav className="navbar-loggedin">
           <ul>
-            <li>Welcome, {this.state.loggedInUser.firstName}</li>
+            <li id="welcome">Welcome, {this.state.loggedInUser.firstName} {this.state.loggedInUser.lastName}</li>
             <li>
               <Link to='/projects' style={{ textDecoration: 'none' }}>Projects</Link>
             </li>
@@ -40,10 +41,12 @@ class Navbar extends Component {
     } else {
       return (
         <div>
-        <nav className="nav-style">
+        <nav className="navbar-loggedout">
           <ul>
-            <li><Link to='/login' style={{ textDecoration: 'none' }}>Login</Link></li>
-            <li><Link to='/signup' style={{ textDecoration: 'none' }}>Signup</Link></li>
+            <li id="login">
+            <Link to='/login'></Link></li>
+            <li id="signup">
+            <Link to='/signup'></Link></li>
           </ul>
         </nav>
         </div>

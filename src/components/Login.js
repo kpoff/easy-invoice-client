@@ -34,7 +34,8 @@ class Login extends Component {
 
   showLoginForm(){
     return(
-      <div>
+      <div className="homepage">
+      <fieldset>
         <form onSubmit={this.handleFormSubmit}>
           <label>Email:</label>
           <input type="email" name="email" value={this.state.email} onChange={ e => this.handleChange(e)}/>
@@ -44,10 +45,12 @@ class Login extends Component {
           
           <input type="submit" value="Login" />
         </form>
-  
         <p>Don't have an account? 
             <Link to={"/signup"}> Signup</Link>
         </p>
+        </fieldset>
+  
+       
   
       </div>
     )

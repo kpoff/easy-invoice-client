@@ -5,15 +5,15 @@ import axios from 'axios';
 class AuthService {
   constructor() {
     let service = axios.create({
-      baseURL: process.env.BASE_URL,
+      baseURL: process.env.REACT_APP_BASE_URL,
       withCredentials: true
     });
     this.service = service;
   }
 
 
-signup = (email, password, role, firstName, lastName) => {
-    return this.service.post('/signup', {email, password, role, firstName, lastName})
+signup = (email, password, role, firstName, lastName, businessName, address, phone) => {
+    return this.service.post('/signup', {email, password, role, firstName, lastName, businessName, address, phone})
     .then(response => response.data)
   }
 

@@ -1,5 +1,5 @@
 .App {
-  text-align: center;
+ 
 }
 
 .App-logo {
@@ -30,3 +30,143 @@
     transform: rotate(360deg);
   }
 }
+
+.homepage{
+  width: 100vw;
+  height: 100vh;
+  background: url('./images/landingpage.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: 1;
+  position:absolute;
+}
+
+.background{
+  width: 100vw;
+  height: 150vh;
+  background: url('./images/background.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: 1;
+  position:absolute;
+  
+}
+
+.navbar-loggedin{
+  list-style-type: none;
+  z-index: 2;
+  position: absolute;
+  margin-left: 80vw;
+}
+
+.navbar-loggedin li{
+  margin-left: 0;
+  list-style-type: none;
+  
+}
+
+.navbar-loggedout{
+  list-style-type: none;
+  z-index: 2;
+  position: absolute;
+  margin-left: 80vw;
+}
+
+.navbar-loggedout li{
+  margin-left: 0;
+  list-style-type: none;
+  width: 11vw;
+  height: 6vh;
+  
+}
+
+#signup a {
+  display: block;
+  padding: 8px 16px;
+  color: #333333;
+  text-decoration: none; 
+  background: url('./images/signup.png');
+  background-size: 11vw;
+  background-repeat: no-repeat;
+  height: 12vh;}
+
+  #login a {
+    display: block;
+    padding: 8px 16px;
+    color: #333333;
+    text-decoration: none; 
+    background: url('./images/login.png');
+    background-size: 11vw;
+    background-repeat: no-repeat;
+    height: 12vh;
+  }
+
+  label {
+    color: rgb(224, 180, 020);
+  }
+
+  p, h1, h3{
+    color: rgb(224, 180, 020)
+  }
+
+  #welcome{
+    color: rgb(224, 180, 020)
+  }
+
+  a{
+    color: rgb(224, 180, 020)
+  }
+
+ #addproject{
+   float: right;
+   margin-right: 10vw;
+ }
+
+
+form p label{
+ float: left;
+}
+
+form p{
+  width: 30vw;
+ }
+
+input, textarea{
+  width: 13vw;
+ }
+
+ form p {
+  text-align: right;
+ }
+
+ .projectlist{
+   margin-top: 20vh;
+   margin-left: 10vw;
+ }
+
+ .editinvoice{
+   width: 40vw;
+ }
+
+ .addinvoice{
+   width: 22vw;
+   float: right;
+   margin-right: 10vw;
+ }
+
+ #invoicelist{
+   margin-top: 10vh;
+ }
+
+ #editform{
+   width: 30vw;
+ }
+
+ .text{
+   margin-left: 10vw;
+ }
+
+
+
+
+ 

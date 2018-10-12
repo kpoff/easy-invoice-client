@@ -5,6 +5,8 @@ import Login from './components/Login';
 import Navbar from './components/Navbar';
 import ProjectList from './components/ProjectList';
 import ProjectDetails from './components/ProjectDetails';
+import InvoiceList from './components/InvoiceList';
+import HomePage from './components/HomePage';
 import AuthService from './components/auth/auth-service';
 import { Switch, Route } from 'react-router-dom';
 
@@ -43,12 +45,14 @@ class App extends Component {
     this.fetchUser();
     return (
       <div className="App">
+      <Route exact path="/" render={() => <HomePage setTheUserInTheAppComponent={this.setTheUser} userInSession={this.state.loggedInUser} />}/>
       <Navbar setTheUserInTheAppComponent={this.setTheUser} userInSession={this.state.loggedInUser} />
         <Switch>
           <Route exact path="/login" render={() => <Login setTheUserInTheAppComponent={this.setTheUser} userInSession={this.state.loggedInUser} />}/>
           <Route exact path="/signup" render={() => <Signup setTheUserInTheAppComponent={this.setTheUser} userInSession={this.state.loggedInUser}/>}/>
           <Route exact path="/projects" render={() => <ProjectList setTheUserInTheAppComponent={this.setTheUser} userInSession={this.state.loggedInUser}/>}/>
           <Route exact path="/projects/:id" render={(props) => <ProjectDetails {...props} setTheUserInTheAppComponent={this.setTheUser} userInSession={this.state.loggedInUser}/>}/>
+          <Route exact path="/invoices/:projectid" render={(props) => <InvoiceList {...props} setTheUserInTheAppComponent={this.setTheUser} userInSession={this.state.loggedInUser}/>}/>
         </Switch>
  
       </div>

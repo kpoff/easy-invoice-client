@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import AddProject from './AddProject';
 import AddClient from './AddClient';
 
@@ -13,7 +13,7 @@ class ProjectList extends Component {
   }
 
   getUserProjects = () =>{
-    axios.get(process.env.BASE_URL+"/projects", {withCredentials: true})
+    axios.get(process.env.REACT_APP_BASE_URL+"/projects", {withCredentials: true})
     .then(responseFromApi => {
       this.setState({
         projectHistory: responseFromApi.data.projectHistory
@@ -43,7 +43,9 @@ class ProjectList extends Component {
   showForm(project, index){
     if(this.state.addClientFormShowing === index){
       return(
-        <AddClient projectID={project._id} getData={this.getUserProjects} hideForm={this.toggleAddClientForm}/>
+        <AddClient projectID={project._id} 
+        getData={this.getUserProjects} 
+        hideForm={this.toggleAddClientForm}/>
         )
     }
   }
@@ -52,36 +54,42 @@ class ProjectList extends Component {
     if(!project.client){
       return(
         <div>
-      <button onClick ={()=> this.toggleAddClientForm(index)}>{this.state.addClientFormShowing === index? 'Hide the Form' : 'Add a New Client'}</button>
+      <button onClick ={()=> this.toggleAddClientForm(index)}>
+      {this.state.addClientFormShowing === index?
+       'Hide the Form' : 'Add a New Client'}</button>
       </div>
       )
     } 
   }
 
   render(){
-    return(
-      <div>
-        <div style={{width: '60%', float:"left"}}>
-          { this.state.projectHistory.map((project, index) => {
-            return (
-              <div key={project._id}>
-                <Link to={`/projects/${project._id}`}>
-                  <h3>Project ID: {project._id}</h3>
-                </Link>
-                <p style={{maxWidth: '400px'}} >{project.description} </p>
-                {this.showAddClientButton(project, index)}
-                {this.showForm(project, index)}
-              </div>
-            )})
-          }
+    if(this.props.userInSession){
+      return(
+        <div className="background">
+          <div>
+            { this.state.projectHistory.map((project, index) => {
+              return (
+                <div className="projectlist" key={project._id}>
+                  <Link to={`/projects/${project._id}`}>
+                    <h3>Project Title: {project.title}</h3>
+                  </Link>
+                  <p>Description: {project.description} </p>
+                  <p> Location: {project.location} </p>
+                  {this.showAddClientButton(project, index)}
+                  {this.showForm(project, index)}
+                </div>
+              )})
+            }
+          </div>
+          <div id="addproject">
+            <button onClick ={()=> this.toggleAddProjectForm()}>{this.state.addProjectFormShowing? 'Hide the Form' : 'Add a New Project'}</button>
+              {this.state.addProjectFormShowing && <AddProject getData={() => this.getUserProjects()}/>} 
+          </div>
         </div>
-        <div style={{width: '40%', float:"right"}}>
-          <button onClick ={()=> this.toggleAddProjectForm()}>{this.state.addProjectFormShowing? 'Hide the Form' : 'Add a New Project'}</button>
-            {this.state.addProjectFormShowing && <AddProject getData={() => this.getUserProjects()}/>}
-            
-        </div>
-      </div>
-    )
+      )
+    }else{
+      return (<Redirect to="/login"/>)
+    }
   }
 }
 
