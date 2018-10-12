@@ -117,6 +117,13 @@
     color: rgb(224, 180, 020)
   }
 
+ fieldset{
+   width: 50vw;
+   margin-top: 70vh;
+   margin-left: 25vw;
+   border: none;
+ }
+
  #addproject{
    float: right;
    margin-right: 10vw;
