@@ -59,7 +59,7 @@ class Login extends Component {
   
   render(){
     if(this.props.userInSession){
-      return <Redirect to='/'/>
+      return <Redirect to='/projects'/>
     }
     
     return(

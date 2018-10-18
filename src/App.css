@@ -33,7 +33,7 @@
 
 .homepage{
   width: 100vw;
-  height: 100vh;
+  height: 180vh;
   background: url('./images/landingpage.png');
   background-repeat: no-repeat;
   background-size: cover;
@@ -43,7 +43,7 @@
 
 .background{
   width: 100vw;
-  height: 150vh;
+  height: 180vh;
   background: url('./images/background.png');
   background-repeat: no-repeat;
   background-size: cover;
@@ -56,12 +56,14 @@
   list-style-type: none;
   z-index: 2;
   position: absolute;
-  margin-left: 80vw;
+  margin-left: 60vw;
 }
 
 .navbar-loggedin li{
   margin-left: 0;
   list-style-type: none;
+  display: inline;
+  margin-right: 4vw;
   
 }
 
@@ -77,7 +79,6 @@
   list-style-type: none;
   width: 11vw;
   height: 6vh;
-  
 }
 
 #signup a {
@@ -110,7 +111,8 @@
   }
 
   #welcome{
-    color: rgb(224, 180, 020)
+    color: rgb(224, 180, 020);
+    
   }
 
   a{
@@ -124,10 +126,7 @@
    border: none;
  }
 
- #addproject{
-   float: right;
-   margin-right: 10vw;
- }
+
 
 
 form p label{
@@ -146,10 +145,22 @@ input, textarea{
   text-align: right;
  }
 
- .projectlist{
-   margin-top: 20vh;
-   margin-left: 10vw;
+ #container{
+   display: flex;
+   flex-direction: row;
+   align-items: baseline;
  }
+
+ .projectlist{
+  margin-top: 20vh;
+  margin-left: 10vw;
+}
+
+
+ #addproject{
+   margin-top: 20vh;
+   margin-left: 35vw;
+}
 
  .editinvoice{
    width: 40vw;

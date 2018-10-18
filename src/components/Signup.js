@@ -54,38 +54,47 @@ class Signup extends Component {
   
   render(){
     if(this.props.userInSession){
-      return <Redirect to='/'/>
+      return <Redirect to='/projects'/>
     }
     return(
-      <div>
+      <div className = "homepage">
+      <fieldset>
       <form onSubmit={this.handleFormSubmit}>
+        <p>
         <label>Email:</label>
         <input type="email" name="email" value={this.state.email} onChange={ e => this.handleChange(e)}/>
-        
+        </p>
+        <p>
         <label>Password:</label>
-        <input type="password" name="password" value={this.state.password} onChange={ e => this.handleChange(e)} />
-
+        <input type="password" name="password" placeholder = "must be 7 characters long" value={this.state.password} onChange={ e => this.handleChange(e)} />
+       </p>
+        <p>
         <label>First Name:</label>
         <input type="text" name="firstName" value={this.state.firstName} onChange={ e => this.handleChange(e)}/>
-
+        </p>
+        <p>
         <label>Last Name:</label>
         <input type="text" name="lastName" value={this.state.lastName} onChange={ e => this.handleChange(e)}/>
-
+        </p>
+        <p>
         <label>Business Name:</label>
         <input type="text" name="businessName" value={this.state.businessName} onChange={ e => this.handleChange(e)}/>
-
+        </p>
+        <p>
         <label>Address:</label>
         <input type="text" name="address" value={this.state.address} onChange={ e => this.handleChange(e)}/>
-
+        </p>
+        <p>
         <label>Phone:</label>
         <input type="text" name="phone" value={this.state.phone} onChange={ e => this.handleChange(e)}/>
-        
+        </p>
         <input type="submit" value="Signup" />
       </form>
 
       <p>Already have account? 
           <Link to={"/login"}> Login</Link>
       </p>
+      </fieldset>
 
     </div>
     )

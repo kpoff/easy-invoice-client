@@ -31,10 +31,11 @@ class Navbar extends Component {
             <li id="welcome">Welcome, {this.state.loggedInUser.firstName} {this.state.loggedInUser.lastName}</li>
             <li>
               <Link to='/projects' style={{ textDecoration: 'none' }}>Projects</Link>
-            </li>
+              </li>
             <li>
               <button onClick={()=>this.logout()}>Log Out</button>
             </li>
+            
           </ul>
         </nav>
       )

@@ -66,7 +66,7 @@ class ProjectList extends Component {
     if(this.props.userInSession){
       return(
         <div className="background">
-          <div>
+          <div id="container">
             { this.state.projectHistory.map((project, index) => {
               return (
                 <div className="projectlist" key={project._id}>
@@ -80,10 +80,11 @@ class ProjectList extends Component {
                 </div>
               )})
             }
-          </div>
+          
           <div id="addproject">
             <button onClick ={()=> this.toggleAddProjectForm()}>{this.state.addProjectFormShowing? 'Hide the Form' : 'Add a New Project'}</button>
               {this.state.addProjectFormShowing && <AddProject getData={() => this.getUserProjects()}/>} 
+          </div>
           </div>
         </div>
       )
